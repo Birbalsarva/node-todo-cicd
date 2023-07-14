@@ -2,6 +2,6 @@ version: '3.9'
 
 services:
   web:
-    image: "birbalsarva/node-todo-cicd:9"
+    image: "birbalsarva/node-todo-cicd:10"
     ports:
       - "8000:8000"
