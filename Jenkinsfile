@@ -1,12 +1,12 @@
 pipeline {
-    agent { label "dev-server" }
+    agent any 
     stages{
         stage("Clone Code"){
             steps{
-                git url: "git@github.com:Birbalsarva/node-todo-cicd.git", branch: "main"
+                git url: "https://github.com/Birbalsarva/node-todo-cicd.git", branch: "main"
             }
         }
-       stage('Build and Push Docker Image') {
+        stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "birbalsarva/node-todo-cicd:${BUILD_NUMBER}"
         DOCKERFILE_LOCATION = "node-todo-cicd/Dockerfile"
@@ -22,7 +22,7 @@ pipeline {
         }
       }
     }
-        stage("Deploy"){
+    stage("Deploy"){
             steps{
                 sh "docker-compose down && docker-compose up -d"
             }
