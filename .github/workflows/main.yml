@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout specific repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: Birbalsarva/node-todo-cicd  # No need for path if files are in root
 
