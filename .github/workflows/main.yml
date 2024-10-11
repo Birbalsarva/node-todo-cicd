@@ -10,8 +10,10 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout specific repo
+        uses: actions/checkout@v2
+        with:
+          repository: Birbalsarva/node-todo-cicd  # No need for path if files are in root
 
       - name: Build Docker image
         run: |
