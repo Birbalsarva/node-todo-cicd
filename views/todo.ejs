@@ -1,38 +1,147 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List App Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    <head>
-        <title>Todo List APP test</title>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
+        h1 {
+            font-family: 'Fira Code', monospace;
+            color: #00c853;
+            background-color: #1e1e1e;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            margin-top: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f0f2f5;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        li:hover {
+            background: #e1e8f0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #444;
+            font-size: 18px;
+            margin-right: 10px;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #ff1744;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #00c853;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00b347;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
 
-        </style>
-    </head>
+<body>
 
-    <body>
-        <h1 style="font-family: 'Courier New', monospace; color: #00ff00;" > ✔ Deployment Successful!
-               Jenkins FTW 🚀</h1>
+    <h1>From pipeline to production, Jenkins delivers with zero downtime:</h1>
+
+    <div class="container">
         <ul>
             <% todolist.forEach(function(todo, index) { %>
             <li>
-                <a href="/todo/delete/<%= index %>">✘</a>
-                <a href="/todo/<%= index %>">✎</a>
-                <%- todo %>
+                <div>
+                    <a href="/todo/delete/<%= index %>" title="Delete">✘</a>
+                    <a href="/todo/<%= index %>" title="Edit">✎</a>
+                    <span><%- todo %></span>
+                </div>
             </li>
             <% }); %>
         </ul>
 
         <form action="/todo/add/" method="post">
-            <p>
-                <label for="newtodo">What shoud I do?</label>
-                <input type="text" name="newtodo" id="newtodo" autofocus />
-                <input type="submit" value="Add" />
-            </p>
+            <label for="newtodo">What should I do?</label>
+            <input type="text" name="newtodo" id="newtodo" placeholder="Enter a new task..." autofocus />
+            <input type="submit" value="Add" />
         </form>
-    </body>
+    </div>
+
+</body>
 
 </html>
